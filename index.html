@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9 Physics - Chapter 6: Is Matter Pure? | విశుద్ధ పదార్థమా?</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #059669;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; padding-bottom: 60px; }
+        
+        /* Visitor Tracking Modal Overlay */
+        #visitor-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000; display: flex;
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 12px; width: 100%; max-width: 450px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center;
+        }
+        .modal-content h2 { margin-bottom: 15px; color: var(--primary); }
+        .modal-content input {
+            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border);
+            border-radius: 6px; font-size: 16px;
+        }
+        .modal-content button {
+            background: var(--primary); color: white; border: none; padding: 12px 20px;
+            width: 100%; border-radius: 6px; font-size: 16px; cursor: pointer; font-weight: bold;
+            margin-top: 10px; transition: background 0.3s;
+        }
+        .modal-content button:hover { background: var(--primary-dark); }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        header p { font-size: 1rem; opacity: 0.9; }
+
+        .nav-container {
+            background: white; padding: 10px; overflow-x: auto; white-space: nowrap;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex; gap: 10px; border-bottom: 1px solid var(--border);
+        }
+        .nav-container a {
+            display: inline-block; padding: 8px 15px; background: var(--bg-light);
+            color: var(--primary); text-decoration: none; border-radius: 20px;
+            font-size: 14px; font-weight: 600; border: 1px solid var(--border); transition: all 0.3s;
+        }
+        .nav-container a:hover { background: var(--primary); color: white; }
+
+        /* Main Container */
+        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+
+        section {
+            background: var(--card-bg); margin-bottom: 25px; padding: 25px;
+            border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border);
+        }
+        h2.section-title {
+            color: var(--primary); border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px; margin-bottom: 15px; font-size: 1.4rem;
+        }
+        h3 { color: var(--accent); margin: 15px 0 10px 0; font-size: 1.1rem; }
+        
+        .bilingual-box {
+            background: #f1f5f9; border-left: 4px solid var(--primary);
+            padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0;
+        }
+        .english-text { margin-bottom: 8px; font-weight: 500; }
+        .telugu-text { color: #475569; font-size: 0.95rem; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--primary); color: white; }
+        tr:nth-child(even) { background: #f8fafc; }
+
+        /* Q&A and Exercises */
+        .qa-box { background: #fffbeb; border: 1px solid #fde68a; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .question { font-weight: bold; color: #92400e; margin-bottom: 8px; font-size: 1.05rem; }
+        .answer { color: #1e293b; }
+        .detailed-telugu-desc { background: #fef3c7; padding: 10px; border-radius: 6px; margin-top: 8px; font-size: 0.95rem; color: #78350f; }
+
+        /* Timer Float Widget */
+        #timer-float {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(30, 41, 59, 0.9);
+            color: white; padding: 8px 15px; border-radius: 20px; font-size: 12px; z-index: 99;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Scroll to top button */
+        #top-btn {
+            position: fixed; bottom: 20px; right: 20px; background: var(--primary);
+            color: white; border: none; width: 45px; height: 45px; border-radius: 50%;
+            cursor: pointer; display: none; justify-content: center; align-items: center;
+            font-size: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 99;
+        }
+        #top-btn:hover { background: var(--primary-dark); }
+        
+        .page-badge { float: right; font-size: 0.8rem; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <!-- Visitor Information Modal -->
+    <div id="visitor-modal">
+        <div class="modal-content">
+            <h2>Welcome Student! / విద్యార్థులకు స్వాగతం!</h2>
+            <p style="font-size: 14px; color: #64748b; margin-bottom: 15px;">Please enter your details to access Chapter 6 study materials.</p>
+            <input type="text" id="visitor-name" placeholder="Enter Your Name / మీ పేరు" required>
+            <input type="text" id="visitor-roll" placeholder="Enter Roll Number / రోల్ నంబర్" required>
+            <button onclick="startSession()">Start Learning / అభ్యాసనం ప్రారంభించండి</button>
+        </div>
+    </div>
+
+    <!-- Floating Timer & Scroll Button -->
+    <div id="timer-float">Time Spent: <span id="time-counter">00:00</span></div>
+    <button id="top-btn" onclick="scrollToTop()">↑</button>
+
+    <header>
+        <h1>Class 9 Physical Science - Chapter 6</h1>
+        <p>IS MATTER PURE? (విశుద్ధ పదార్థమా?)</p>
+    </header>
+
+    <!-- Upper Index Navigation -->
+    <div class="nav-container">
+        <a href="#intro">Introduction</a>
+        <a href="#mixtures">Mixtures & Solutions</a>
+        <a href="#separation">Separation Techniques</a>
+        <a href="#substances">Elements & Compounds</a>
+        <a href="#keypoints">40+ Key Points</a>
+        <a href="#glossary">40+ Glossary & Examples</a>
+        <a href="#exercises">Complete Exercises & Q&A</a>
+    </div>
+
+    <div class="container">
+
+        <!-- Section 1: Introduction & Mixtures -->
+        <section id="intro">
+            <span class="page-badge">Page 83-84</span>
+            <h2 class="section-title">1. Introduction & What is Pure?</h2>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> In daily life, 'pure' means no adulteration. In chemistry, a pure substance means a single form of matter where all constituent particles have the same chemical nature and fixed composition.</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> దైనందిన జీవితంలో 'స్వచ్ఛమైన' అంటే ఎలాంటి కల్మషం లేనిది అని అర్థం. కానీ రసాయన శాస్త్రంలో విశుద్ధ పదార్థం అనగా దానిలోని అన్ని కణాలు ఒకే రకమైన రసాయన స్వభావాన్ని మరియు స్థిరమైన సంఘటనను కలిగి ఉండటం.</div>
+            </div>
+            
+            <h3>Activity 1: Is Full Cream Pure? / పూర్తి మీగడ స్వచ్ఛమైనదా?</h3>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> Churning milk separates paste-like solid cream, which contains more than one component, proving it is a mixture. Centrifugation is used commercially and in labs (blood/urine tests) to separate heavier and lighter particles.</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> పాలను చిలకడం ద్వారా ముద్దలాంటి మీగడ వేరుపడుతుంది. ఇందులో ఒకటి కంటే ఎక్కువ పదార్థాలు ఉంటాయి కాబట్టి ఇది మిశ్రమం. సెంట్రిఫ్యూగేషన్ (కేంద్రాపసరణ) పద్ధతిని పరిశ్రమలలో మరియు ప్రయోగశాలలలో (రక్తం, మూత్ర పరీక్షల కొరకు) బరువైన మరియు తేలికైన కణాలను వేరు చేయడానికి వాడతారు.</div>
+            </div>
+        </section>
+
+        <!-- Section 2: Types of Mixtures & Solutions -->
+        <section id="mixtures">
+            <span class="page-badge">Page 84-86</span>
+            <h2 class="section-title">2. Types of Mixtures & Solutions</h2>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> Mixtures are classified into Homogeneous (uniform composition throughout, e.g., saltwater, lemonade, air) and Heterogeneous (non-uniform composition, e.g., oil and water). A solution is a homogeneous mixture of two or more substances comprising a solute and a solvent.</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> మిశ్రమాలు రెండు రకాలు: సజాతీయ మిశ్రమాలు (అంతటా ఏకరీతిగా కలసిపోతాయి, ఉదా: ఉప్పు నీరు, గాలి) మరియు విజాతీయ మిశ్రమాలు (ఏకరీతిగా కలవవు, ఉదా: నూనె మరియు నీరు). ద్రావణం అనేది ద్రావితం మరియు ద్రావణిలను కలిగి ఉండే ఒక సజాతీయ మిశ్రమం.</div>
+            </div>
+
+            <h3>Concentration & Solubility / గాఢత మరియు ద్రావణీయత</h3>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> The amount of solute present in a saturated solution at a certain temperature is its solubility. Mass percentage = (Mass of solute / Mass of solution) × 100.</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> ఒక নির্দিষ্ট ఉష్ణోగ్రత వద్ద సంతృప్త ద్రావణంలో కరిగి ఉండే ద్రావితం పరిమాణాన్ని ద్రావణీయత అంటారు. ద్రవ్యరాశి శాతాన్ని (ద్రావిత ద్రవ్యరాశి / ద్రావణ ద్రవ్యరాశి) × 100 సూత్రంతో లెక్కిస్తారు.</div>
+            </div>
+        </section>
+
+        <!-- Section 3: Separation Techniques -->
+        <section id="separation">
+            <span class="page-badge">Page 90-95</span>
+            <h2 class="section-title">3. Separating Components of Mixtures</h2>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> Various techniques include Sublimation (ammonium chloride from salt), Evaporation (dye from ink), Paper Chromatography (separating colored components), Separating Funnel (immiscible liquids like oil and water), Simple & Fractional Distillation (miscible liquids), and Fractional Distillation of liquid air to obtain gases.</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> మిశ్రమాల వేరుచేతకు అనేక పద్ధతులు ఉన్నాయి. అవేంటంటే ఉత్పతనం (ఉప్పు నుండి అమ్మోనియం క్లోరైడ్), బాష్పీభవనం (ఇంక్ నుండి రంగు), పేపర్ క్రోమాటోగ్రఫీ (రంగుల వేరుచేత), వేరుచేయు గరాటు (నూనె మరియు నీరు వంటి కలవని ద్రవాలు), సాధారణ మరియు పాక్షిక స్వేదనము (కలిసే ద్రవాలు), మరియు ద్రవీభవించిన గాలి నుండి వాయువులను వేరుచేయడం.</div>
+            </div>
+        </section>
+
+        <!-- Section 4: Elements and Compounds -->
+        <section id="substances">
+            <span class="page-badge">Page 95-97</span>
+            <h2 class="section-title">4. Pure Substances: Elements & Compounds</h2>
+            <div class="bilingual-box">
+                <div class="english-text"><strong>English:</strong> Pure substances are categorized into Elements (cannot be broken down into simpler substances by chemical reactions, e.g., copper, oxygen) and Compounds (two or more elements combined chemically in a fixed proportion, e.g., water, copper sulphate).</div>
+                <div class="telugu-text"><strong>తెలుగు:</strong> విశుద్ధ పదార్థాలు మూలకాలు మరియు సమ్మేళనాలుగా వర్గీకరించబడ్డాయి. మూలకాలను రసాయన చర్య ద్వారా సరళ పదార్థాలుగా విడగొట్టలేము (ఉదా: రాగి, ఆక్సిజన్). సమ్మేళనం అనేది రెండు లేదా అంతకంటే ఎక్కువ మూలకాలు ఒక నిర్దిష్ట నిష్పత్తిలో రసాయన సంయోగం చెందడం ద్వారా ఏర్పడుతుంది (ఉదా: నీరు).</div>
+            </div>
+        </section>
+
+        <!-- Section 5: 40+ Key Points -->
+        <section id="keypoints">
+            <h2 class="section-title">5. Key Points (ముఖ్యమైన అంశాలు - 40+)</h2>
+            <ul>
+                <li>1. Pure substance has a fixed chemical composition. | విశుద్ధ పదార్థం స్థిరమైన రసాయన సంఘటన కలిగి ఉంటుంది.</li>
+                <li>2. A mixture contains two or more substances physically mixed. | మిశ్రమం భౌతికంగా కలిపిన రెండు లేదా అంతకంటే ఎక్కువ పదార్థాలను కలిగి ఉంటుంది.</li>
+                <li>3. Homogeneous mixture has uniform distribution throughout. | సజాతీయ మిశ్రమం అంతటా ఏకరీతిగా ఉంటుంది.</li>
+                <li>4. Heterogeneous mixture has non-uniform distribution. | విజాతీయ మిశ్రమంలో పదార్థాలు ఏకరీతిగా కలిసిపోవు.</li>
+                <li>5. Solution is a homogeneous mixture of solute and solvent. | ద్రావణం అనేది ద్రావితం మరియు ద్రావణీల సజాతీయ మిశ్రమం.</li>
+                <li>6. Solute is dissolved in solvent. | ద్రావణిలో ద్రావితం కరుగుతుంది.</li>
+                <li>7. Tincture of iodine has iodine as solute and alcohol as solvent. | అయోడిన్ టించర్‌లో అయోడిన్ ద్రావితం, ఆల్కహాల్ ద్రావణి.</li>
+                <li>8. Saturated solution cannot dissolve more solute at that temperature. | సంతృప్త ద్రావణంలో ఆ ఉష్ణోగ్రత వద్ద మరింత ద్రావితం కరగదు.</li>
+                <li>9. Solubility increases with temperature. | ఉష్ణోగ్రత పెరిగితే ద్రావణీయత పెరుగుతుంది.</li>
+                <li>10. Mass percentage expresses concentration by mass. | ద్రవ్యరాశి శాతము ద్రావణ గాఢతను తెలియజేస్తుంది.</li>
+                <li>11. Suspensions are unstable heterogeneous mixtures. | అవలంబనాలు అస్థిరమైన విజాతీయ మిశ్రమాలు.</li>
+                <li>12. Colloidal solutions appear homogeneous but are heterogeneous. | కొలాయిడ్ ద్రావణాలు సజాతీయంగా కనిపించినా అవి విజాతీయమైనవి.</li>
+                <li>13. Tyndall effect is the scattering of light by colloidal particles. | కొలాయిడ్ కణాలు కాంతి కిరణాలను పరిక్షేపణం చేయడాన్ని టిండాల్ ప్రభావం అంటారు.</li>
+                <li>14. Fog, clouds, and smoke are types of aerosols (colloids). | పొగమంచు, మేఘాలు, పొగ వంటివి ఏరోసోల్స్ (కొలాయిడ్స్) రకాలు.</li>
+                <li>15. Sublimation converts solid directly to gas. | ఉత్పతనం ద్వారా ఘన పదార్థం నేరుగా వాయువుగా మారుతుంది.</li>
+                <li>16. Ammonium chloride sublimes on heating. | అమ్మోనియం క్లోరైడ్ వేడి చేస్తే ఉత్పతనం చెందుతుంది.</li>
+                <li>17. Chromatography separates components based on their solubility. | క్రోమాటోగ్రఫీ ద్రావణీయత ఆధారంగా కణాలను వేరుచేస్తుంది.</li>
+                <li>18. Immiscible liquids form separate layers. | కలవని ద్రవాలు వేర్వేరు పొరలుగా విడిపోతాయి.</li>
+                <li>19. Separating funnel isolates immiscible liquids. | వేరుచేయు గరాటు కలవని ద్రవాలను వేరుచేయడానికి ఉపయోగపడుతుంది.</li>
+                <li>20. Simple distillation separates miscible liquids with large boiling point difference. | మరుగుస్థానాలలో ఎక్కువ తేడా ఉన్న మిశ్రణ ద్రవాలను సాధారణ స్వేదనం వేరుచేస్తుంది.</li>
+                <li>21. Fractional distillation is used when boiling point difference is less than 25°C. | మరుగుస్థానాల తేడా 25°C కన్నా తక్కువగా ఉన్నప్పుడు పాక్షిక స్వేదనం వాడతారు.</li>
+                <li>22. Air can be separated into oxygen, argon, and nitrogen via fractional distillation of liquid air. | ద్రవీభవించిన గాలి నుండి పాక్షిక స్వేదనం ద్వారా వాయువులను వేరుచేస్తారు.</li>
+                <li>23. Elements cannot be broken down chemically. | మూలకాలను రసాయన పద్ధతిలో సరళ పదార్థాలుగా విడగొట్టలేము.</li>
+                <li>24. Compounds have fixed composition and entirely new properties. | సమ్మేళనాలు స్థిరమైన సంఘటన మరియు కొత్త ధర్మాలను కలిగి ఉంటాయి.</li>
+                <li>25. Iron and sulfur form a mixture when unheated, and a compound when heated. | ఇనుము, సల్ఫర్ కలయిక వేడి చేయనప్పుడు మిశ్రమం, వేడి చేసినప్పుడు సమ్మేళనాన్ని ఇస్తాయి.</li>
+                <li>26. Centrifugation separates particles based on density. | సెంట్రిఫ్యూగేషన్ సాంద్రత ఆధారంగా కణాలను వేరుచేస్తుంది.</li>
+                <li>27. Milk cream separation uses centrifugal force. | పాల మీగడ వేరుచేయడానికి కేంద్రాపసరణ శక్తిని వాడతారు.</li>
+                <li>28. Soda water contains carbon dioxide gas dissolved in water. | సోడా నీటిలో కార్బన్ డై ఆక్సైడ్ వాయువు కరిగి ఉంటుంది.</li>
+                <li>29. True solutions do not scatter light. | నిజ ద్రావణాలు కాంతిని పరిక్షేపణం చేయవు.</li>
+                <li>30. Colloidal particle size ranges from 1 nm to 100 nm. | కొలాయిడ్ కణ పరిమాణం 1 nm నుండి 100 nm వరకు ఉంటుంది.</li>
+                <li>31. Disperse phase and dispersion medium form colloids. | విక్షిప్త ప్రావస మరియు విక్షేపణ యానకం కలిసి కొలాయిడ్లను ఏర్పరుస్తాయి.</li>
+                <li>32. Robert Boyle used the term 'element'. | రాబర్ట్ బాయిల్ 'మూలకం' అనే పదాన్ని మొదటిసారిగా వాడారు.</li>
+                <li>33. Lavoisier gave the first useful definition of an element. | ల్యావోయిసియర్ మూలకానికి మొదటి స్పష్టమైన నిర్వచనం ఇచ్చారు.</li>
+                <li>34. Sir Humphry Davy discovered sodium and potassium. | సర్ హంఫ్రీ డేవి సోడియం, పొటాషియం వంటి మూలకాలను కనుగొన్నారు.</li>
+                <li>35. Water is a compound of hydrogen and oxygen. | నీరు అనేది హైడ్రోజన్ మరియు ఆక్సిజన్ల యొక్క సమ్మేళనం.</li>
+                <li>36. Alloys are homogeneous mixtures of metals. | మిశ్రమ లోహాలు లోహాల యొక్క సజాతీయ మిశ్రమాలు.</li>
+                <li>37. Brass is a mixture of copper and zinc. | ఇత్తడి అనేది రాగి మరియు జింక్ ల మిశ్రమం.</li>
+                <li>38. Filtration separates suspended insoluble solids. | వడపోత ద్వారా నీటిలో కరగని ఘన పదార్థాలను వేరుచేయవచ్చు.</li>
+                <li>39. Evaporation removes volatile liquid leaving dissolved solid. | బాష్పీభవనం ద్వారా ద్రావణి ఆవిరైపోయి ద్రావితం మిగులుతుంది.</li>
+                <li>40. Chemistry defines purity through chemical composition and atomic uniformity. | రసాయన శాస్త్రం రసాయన సంఘటన ఆధారంగా పదార్థాల విశుద్ధతను నిర్ధారిస్తుంది.</li>
+            </ul>
+        </section>
+
+        <!-- Section 6: 40+ Glossary Vocabulary with Deep Telugu Explanations & Examples -->
+        <section id="glossary">
+            <h2 class="section-title">6. Glossary Vocabulary with Long Telugu Explanations & Examples (పదకోశం - ఉదాహరణలతో కూడిన వివరణ)</h2>
+            <ul>
+                <li>1. <strong>Adulteration (కల్మషం / కల్తీ):</strong> Adding inferior or impure substances to food or goods. 
+                    <br><em>Telugu Explanation:</em> ఆహార పదార్థాలలో లేదా వస్తువులలో పనికిరాని లేదా హానికరమైన పదార్థాలను కలపడాన్ని కల్తీ అంటారు. 
+                    <br><em>Example:</em> Adulteration in milk is checked using a lactometer. (పాలలో నీరు కలిపి చేసే కల్తీని లాక్టోమీటర్ సహాయంతో పరీక్షిస్తారు.)</li>
+                
+                <li>2. <strong>Centrifugation (కేంద్రాపసరణ పద్ధతి):</strong> A process using centrifugal force for separating heavier and lighter particles in a liquid mixture.
+                    <br><em>Telugu Explanation:</em> ద్రవ మిశ్రమంలోని బరువైన మరియు తేలికైన కణాలను వేగంగా తిప్పడం ద్వారా వేరుచేసే విధానం.
+                    <br><em>Example:</em> Diagnostic laboratories use centrifugation to test blood and urine samples. (వైద్య ప్రయోగశాలల్లో రక్తం మరియు మూత్ర నమూనాలను పరీక్షించడానికి సెంట్రిఫ్యూగేషన్ పద్ధతిని వాడతారు.)</li>
+
+                <li>3. <strong>Homogeneous Mixture (సజాతీయ మిశ్రమం):</strong> A mixture in which components are uniformly distributed throughout.
+                    <br><em>Telugu Explanation:</em> మిశ్రమం అంతటా పదార్థాలు ఏకరీతిగా కలిసిపోయి ఉంటే దానిని సజాతీయ మిశ్రమం అంటారు.
+                    <br><em>Example:</em> Salt water is a homogeneous mixture because salt dissolves completely. (ఉప్పు నీటిలో పూర్తిగా కరిగిపోతుంది కాబట్టి అది సజాతీయ మిశ్రమం.)</li>
+
+                <li>4. <strong>Heterogeneous Mixture (విజాతీయ మిశ్రమం):</strong> A mixture in which components are not uniformly distributed.
+                    <br><em>Telugu Explanation:</em> పదార్థాలు ఏకరీతిగా కలవకుండా వేర్వేరు భాగాలుగా ఉండే మిశ్రమాన్ని విజాతీయ మిశ్రమం అంటారు.
+                    <br><em>Example:</em> Oil and water form a heterogeneous mixture as oil floats on water. (నూనె నీటిపై తేలుతుంది కాబట్టి నూనె, నీరు విజాతీయ మిశ్రమం.)</li>
+
+                <li>5. <strong>Solute (ద్రావితం):</strong> The component of a solution that gets dissolved.
+                    <br><em>Telugu Explanation:</em> ద్రావణిలో కరిగిపోయే పదార్థాన్ని ద్రావితం అంటారు (ఇది సాధారణంగా తక్కువ పరిమాణంలో ఉంటుంది).
+                    <br><em>Example:</em> Sugar is the solute when preparing sugar syrup in water. (నీటిలో పంచదార పాకం చేసేటప్పుడు పంచదార ద్రావితం అవుతుంది.)</li>
+
+                <li>6. <strong>Solvent (ద్రావణి):</strong> The component of a solution that dissolves other substances.
+                    <br><em>Telugu Explanation:</em> వేరే పదార్థాలను తనలో కరిగించుకునే యానకాన్ని ద్రావణి అంటారు (ఇది ఎక్కువ పరిమాణంలో ఉంటుంది).
+                    <br><em>Example:</em> Water is a universal solvent used for dissolving many substances. (నీరు అనేక పదార్థాలను కరిగించుకునే ఒక అద్భుతమైన ద్రావణి.)</li>
+
+                <li>7. <strong>Solution (ద్రావణం):</strong> A homogeneous mixture of two or more substances.
+                    <br><em>Telugu Explanation:</em> రెండు లేదా అంతకంటే ఎక్కువ పదార్థాల యొక్క సజాతీయ మిశ్రమాన్ని ద్రావణం అంటారు.
+                    <br><em>Example:</em> Lemonade is a delicious solution of water, sugar, and lemon juice. (నిమ్మరసం అనేది నీరు, పంచదార మరియు నిమ్మరసంతో కూడిన ద్రావణం.)</li>
+
+                <li>8. <strong>Saturated Solution (సంతృప్త ద్రావణం):</strong> A solution in which no more solute can dissolve at that specific temperature.
+                    <br><em>Telugu Explanation:</em> ఒక నిర్దిష్ట ఉష్ణోగ్రత వద్ద ద్రావణిలో ఇంకా ఎంతమాత్రం ద్రావితం కరగనటువంటి స్థితిని సంతృప్త ద్రావణం అంటారు.
+                    <br><em>Example:</em> If you keep adding salt to water, a stage comes when salt stops dissolving, forming a saturated solution. (నీటిలో ఉప్పు కలుపుతూ పోతే ఒక దశలో ఉప్పు కరగడం ఆగిపోతుంది, అదే సంతృప్త ద్రావణం.)</li>
+
+                <li>9. <strong>Unsaturated Solution (అసంతృప్త ద్రావణం):</strong> A solution that contains less solute than its saturation limit.
+                    <br><em>Telugu Explanation:</em> సంతృప్త స్థితికి కావలసిన దానికంటే తక్కువ ద్రావితం కలిగిన ద్రావణాన్ని అసంతృప్త ద్రావణం అంటారు.
+                    <br><em>Example:</em> Adding a single spoon of salt to a large glass of water gives an unsaturated solution. (పెద్ద గ్లాసు నీటిలో ఒక స్పూన్ ఉప్పు కలిపితే అది అసంతృప్త ద్రావణం అవుతుంది.)</li>
+
+                <li>10. <strong>Solubility (ద్రావణీయత):</strong> The maximum amount of solute that can dissolve in a solvent at a specific temperature.
+                    <br><em>Telugu Explanation:</em> ఒక నిర్దిష్ట ఉష్ణోగ్రత వద్ద ద్రావణిలో కరగగల గరిష్ట ద్రావిత పరిమాణాన్ని ద్రావణీయత అంటారు.
+                    <br><em>Example:</em> The solubility of sugar increases when the water is heated. (నీటిని వేడి చేసినప్పుడు పంచదార యొక్క ద్రావణీయత పెరుగుతుంది.)</li>
+
+                <li>11. <strong>Suspension (అవలంబనం):</strong> A heterogeneous mixture in which solid particles do not dissolve but remain suspended.
+                    <br><em>Telugu Explanation:</em> ఘన పదార్థాలు ద్రవంలో కరగకుండా కళ్లకి కనిపించేలా తేలియాడే విజాతీయ మిశ్రమాన్ని అవలంబనం అంటారు.
+                    <br><em>Example:</em> Chalk powder mixed in water is a classic example of a suspension. (నీటిలో కలిపిన చాక్ పౌడర్ ఒక అవలంబనం.)</li>
+
+                <li>12. <strong>Colloid (కొలాయిడ్):</strong> A heterogeneous mixture with microscopic particles that appear homogeneous but scatter light.
+                    <br><em>Telugu Explanation:</em> చూడటానికి సజాతీయంగా అనిపించినప్పటికీ, కణాలు చాలా సూక్ష్మంగా ఉండి కాంతిని పరిక్షేపణం చేసే విజాతీయ మిశ్రమాన్ని కొలాయిడ్ అంటారు.
+                    <br><em>Example:</em> Milk is a colloidal solution containing fat droplets dispersed in water. (పాలు నీటిలో విక్షిప్తమైన కొవ్వు కణాలతో కూడిన కొలాయిడ్.)</li>
+
+                <li>13. <strong>Tyndall Effect (టిండాల్ ప్రభావం):</strong> The scattering of a beam of light by colloidal particles.
+                    <br><em>Telugu Explanation:</em> కొలాయిడ్ కణాల ద్వారా కాంతి కిరణాలు పరావర్తనం చెంది కాంతి మార్గం స్పష్టంగా కనిపించే దృగ్విషయాన్ని టిండాల్ ప్రభావం అంటారు.
+                    <br><em>Example:</em> Sunlight entering a dark dusty room through a small hole exhibits the Tyndall effect. (చీకటి గదిలో చిన్న రంధ్రం గుండా వచ్చే సూర్యకాంతిలో ధూళి కణాలు కనిపించడం టిండాల్ ప్రభావం.)</li>
+
+                <li>14. <strong>Disperse Phase (విక్షిప్త ప్రావస):</strong> The component present in small proportion in a colloidal solution.
+                    <br><em>Telugu Explanation:</em> కొలాయిడ్ ద్రావణంలో తక్కువ పరిమాణంలో విస్తరించి ఉండే కణాలను విక్షిప్త ప్రావస అంటారు.
+                    <br><em>Example:</em> In milk, fat globules act as the disperse phase. (పాలలో కొవ్వు గ్లోబ్యూల్స్ విక్షిప్త ప్రావసగా ఉంటాయి.)</li>
+
+                <li>15. <strong>Dispersion Medium (విక్షేపణ యానకం):</strong> The medium in which colloidal particles are dispersed.
+                    <br><em>Telugu Explanation:</em> కొలాయిడ్ కణాలు ఏ యానకంలో అయితే విస్తరించి ఉంటాయో దానిని విక్షేపణ యానకం అంటారు.
+                    <br><em>Example:</em> Water acts as the dispersion medium in milk. (పాలలో నీరు విక్షేపణ యానకంగా పనిచేస్తుంది.)</li>
+
+                <li>16. <strong>Sublimation (ఉత్పతనం):</strong> The direct conversion of a solid into gas without passing through the liquid state.
+                    <br><em>Telugu Explanation:</em> ఘన పదార్థం ద్రవ రూపంలోకి మారకుండా నేరుగా వాయు రూపంలోకి మారే ప్రక్రియను ఉత్పతనం అంటారు.
+                    <br><em>Example:</em> Camphor or ammonium chloride undergoes sublimation upon heating. (కర్పూరం లేదా అమ్మోనియం క్లోరైడ్ వేడి చేసినప్పుడు ఉత్పతనం చెందుతాయి.)</li>
+
+                <li>17. <strong>Evaporation (బాష్పీభవనం):</strong> The process of liquid turning into gas from the surface.
+                    <br><em>Telugu Explanation:</em> ద్రవ పదార్థం ఆవిరిగా మారి గాలిలో కలిసిపోయే ప్రక్రియను బాష్పీభవనం అంటారు.
+                    <br><em>Example:</em> Wet clothes dry up due to the evaporation of water. (నీరు ఆవిరి కావడంతో తడి బట్టలు ఆరిపోతాయి.)</li>
+
+                <li>18. <strong>Chromatography (క్రోమాటోగ్రఫీ):</strong> A technique used for separating different components of a mixture based on their differing affinities.
+                    <br><em>Telugu Explanation:</em> వివిధ పదార్థాలు ఒక మాధ్యమంలో కదిలే వేగాల ఆధారంగా వాటిని వేరుచేసే ప్రయోగశాల పద్ధతిని క్రోమాటోగ్రఫీ అంటారు.
+                    <br><em>Example:</em> Paper chromatography is used to separate various colored dyes in black ink. (నల్లని ఇంక్ లోని వివిధ రంగుల రంగులను వేరు చేయడానికి పేపర్ క్రోమాటోగ్రఫీ వాడతారు.)</li>
+
+                <li>19. <strong>Miscible Liquids (కలిసే ద్రవాలు):</strong> Liquids that mix completely in all proportions to form a single phase.
+                    <br><em>Telugu Explanation:</em> ఏ నిష్పత్తిలోనైనా పూర్తిగా కలిసిపోయి ఒకే ద్రవ రూపంలో ఉండే పదార్థాలను కలిసే ద్రవాలు అంటారు.
+                    <br><em>Example:</em> Alcohol and water are completely miscible liquids. (ఆల్కహాల్ మరియు నీరు ఒకదానితో ఒకటి పూర్తిగా కలిసిపోతాయి.)</li>
+
+                <li>20. <strong>Immiscible Liquids (కలవని ద్రవాలు):</strong> Liquids that do not mix and form separate layers.
+                    <br><em>Telugu Explanation:</em> ఒకదానితో ఒకటి కలవకుండా వేర్వేరు పొరలుగా విడిపోయే ద్రవాలను కలవని ద్రవాలు అంటారు.
+                    <br><em>Example:</em> Kerosene oil and water form immiscible layers. (కెరోసిన్ నూనె మరియు నీరు కలవకుండా వేర్వేరు పొరలుగా ఉంటాయి.)</li>
+
+                <li>21. <strong>Distillation (స్వేదనము):</strong> The process of vaporizing a liquid and condensing its vapors to purify it.
+                    <br><em>Telugu Explanation:</em> ద్రవాన్ని మంటపై మరిగించి ఆవిరిగా మార్చి, ఆ ఆవిరిని చల్లబరచి శుద్ధ ద్రవంగా సేకరించే పద్ధతిని స్వేదనం అంటారు.
+                    <br><em>Example:</em> A mixture of acetone and water can be separated by simple distillation. (అసిటోన్ మరియు నీటి మిశ్రమాన్ని స్వేదనం ద్వారా వేరుచేయవచ్చు.)</li>
+
+                <li>22. <strong>Fractional Distillation (పాక్షిక స్వేదనం):</strong> A distillation method used to separate miscible liquids with close boiling points.
+                    <br><em>Telugu Explanation:</em> మరుగుస్థానాల మధ్య తేడా తక్కువగా ఉన్న ద్రవాలను వేరుచేయడానికి ఫ్రాక్షనేటింగ్ కాలమ్‌‌ను ఉపయోగించి చేసే స్వేదన పద్ధతి.
+                    <br><em>Example:</em> Fractional distillation is used to obtain oxygen and nitrogen from liquid air. (ద్రవీభవించిన గాలి నుండి ఆక్సిజన్, నైట్రోజన్‌లను పాక్షిక స్వేదనంతో వేరుచేస్తారు.)</li>
+
+                <li>23. <strong>Element (మూలకం):</strong> A fundamental substance that cannot be broken down into simpler substances by chemical reactions.
+                    <br><em>Telugu Explanation:</em> రసాయన చర్యల ద్వారా మరింత సరళమైన పదార్థాలుగా విడగొట్టలేని స్వచ్ఛమైన మూల పదార్థాన్ని మూలకం అంటారు.
+                    <br><em>Example:</em> Copper and iron are fundamental metallic elements. (రాగి మరియు ఇనుము ప్రాథమిక లోహ మూలకాలు.)</li>
+
+                <li>24. <strong>Compound (సమ్మేళనం):</strong> A pure substance formed by chemical combination of two or more elements in a fixed proportion.
+                    <br><em>Telugu Explanation:</em> రెండు లేదా అంతకంటే ఎక్కువ మూలకాలు నిర్దిష్ట నిష్పత్తిలో రసాయన సంయోగం చెందడం ద్వారా ఏర్పడే పదార్థం సమ్మేళనం.
+                    <br><em>Example:</em> Water is a compound made of hydrogen and oxygen. (నీరు అనేది హైడ్రోజన్, ఆక్సిజన్‌ల సమ్మేళనం.)</li>
+
+                <li>25. <strong>Metal (లోహం):</strong> An element that is malleable, ductile, and conducts heat and electricity.
+                    <br><em>Telugu Explanation:</em> సాగే గుణం, తాళం వేయగల గుణం కలిగి ఉండి, ఉష్ణాన్ని మరియు విద్యుత్‌ను ప్రసరింపజేసే పదార్థాలను లోహాలు అంటారు.
+                    <br><em>Example:</em> Gold, silver, and iron are important metals. (బంగారం, వెండి, ఇనుము ముఖ్యమైన లోహాలు.)</li>
+
+                <li>26. <strong>Non-metal (అలోహం):</strong> An element that lacks metallic properties, is brittle, and poor conductor.
+                    <br><em>Telugu Explanation:</em> లోహ ధర్మాలు లేనివి, పెళుసైనవి మరియు ఉష్ణ, విద్యుత్ ప్రసరింపజేయని పదార్థాలను అలోహాలు అంటారు.
+                    <br><em>Example:</em> Sulfur and oxygen are non-metals. (సల్ఫర్ మరియు ఆక్సిజన్ అలోహాలు.)</li>
+
+                <li>27. <strong>Metalloid (అర్ధలోహం):</strong> Elements exhibiting properties of both metals and non-metals.
+                    <br><em>Telugu Explanation:</em> లోహాలు మరియు అలోహాలు రెండింటి ధర్మాలను ప్రదర్శించే మూలకాలను అర్ధలోహాలు అంటారు.
+                    <br><em>Example:</em> Silicon and germanium are classic metalloids. (సిలికాన్ మరియు జెర్మేనియం అర్ధలోహాలు.)</li>
+
+                <li>28. <strong>Alchemist (రసవాది):</strong> Medieval chemists who attempted to transform base metals into gold.
+                    <br><em>Telugu Explanation:</em> పూర్వకాలంలో సాధారణ లోహాలను బంగారంగా మార్చడానికి మరియు రసాయన ప్రయోగాలు చేసిన పూర్వ శాస్త్రవేత్తలను రసవాదులు అంటారు.
+                    <br><em>Example:</em> Alchemists like Hennig Brand discovered phosphorus while experimenting. (హెన్నిగ్ బ్రాండ్ వంటి రసవాదులు ప్రయోగాలు చేస్తూ ఫాస్పరస్‌ను కనుగొన్నారు.)</li>
+
+                <li>29. <strong>Concentration (గాఢత):</strong> The measure of the amount of solute dissolved in a given amount of solution.
+                    <br><em>Telugu Explanation:</em> ఒక నిర్దిష్ట ద్రావణంలో కరిగి ఉన్న ద్రావితం యొక్క పరిమాణాన్ని గాఢత అంటారు.
+                    <br><em>Example:</em> A solution with 20g salt in 100g water has a concentration of 20% mass percentage. (100 గ్రాముల ద్రావణంలో 20 గ్రాముల ఉప్పు ఉంటే దాని గాఢత 20%.)</li>
+
+                <li>30. <strong>Residue (అవశేషం):</strong> The solid material remaining on the filter paper after filtration.
+                    <br><em>Telugu Explanation:</em> వడపోత ప్రక్రియ తర్వాత ఫిల్టర్ పేపర్‌పై మిగిలిపోయే ఘన పదార్ధపు అవశేషాన్ని రెసిడ్యూ అంటారు.
+                    <br><em>Example:</em> Chalk powder remains as a residue on the filter paper during filtration. (వడపోత సమయంలో చాక్ పౌడర్ ఫిల్టర్ పేపర్‌పై అవశేషంగా మిగులుతుంది.)</li>
+
+                <li>31. <strong>Filtrate (ఫిల్ట్రేట్):</strong> The clear liquid that passes through the filter paper.
+                    <br><em>Telugu Explanation:</em> వడపోత సమయంలో ఫిల్టర్ పేపర్ గుండా క్రిందికి జారివచ్చే స్వచ్ఛమైన ద్రవాన్ని ఫిల్ట్రేట్ అంటారు.
+                    <br><em>Example:</em> The clear water obtained after filtering chalk mixture is the filtrate. (చాక్ మిశ్రమాన్ని వడకట్టగా వచ్చే తేట నీరు ఫిల్ట్రేట్.)</li>
+
+                <li>32. <strong>Decantation (తేర్చుట):</strong> Pouring off a clear liquid from settled sediment.
+                    <br><em>Telugu Explanation:</em> విజాతీయ మిశ్రమంలోని బరువైన కణాలు అడుగున చేరిన తర్వాత, పైన ఉన్న తేట నీటిని కదలకుండా వేరే పాత్రలోకి వంపే పద్ధతి.
+                    <br><em>Example:</em> Decantation is used to separate clear water from settled mud. (అడుగున చేరిన మట్టి నుండి తేట నీటిని వేరు చేయడానికి తేర్చుట పద్ధతి వాడతారు.)</li>
+
+                <li>33. <strong>Aerosol (ఏరోసోల్):</strong> A colloidal dispersion of liquid droplets or solid particles in a gas.
+                    <br><em>Telugu Explanation:</em> వాయు యానకంలో ఘన లేదా ద్రవ కణాలు విక్షిప్తం చెంది ఉండే కొలాయిడ్ వ్యవస్థను ఏరోసోల్ అంటారు.
+                    <br><em>Example:</em> Fog, mist, and clouds are liquid aerosols in air. (పొగమంచు, మేఘాలు గాలిలోని ద్రవ ఏరోసోల్స్.)</li>
+
+                <li>34. <strong>Emulsion (ఎమల్షన్):</strong> A colloidal dispersion of one liquid in another immiscible liquid.
+                    <br><em>Telugu Explanation:</em> ఒక ద్రవం మరొక ద్రవంలో సూక్ష్మబిందువులుగా విక్షిప్తం చెంది ఉండే కొలాయిడ్‌ను ఎమల్షన్ అంటారు.
+                    <br><em>Example:</em> Milk and face creams are common liquid-liquid emulsions. (పాలు మరియు ఫేస్ క్రీమ్‌లు ఎమల్షన్‌లకు ఉదాహరణలు.)</li>
+
+                <li>35. <strong>Gel (జెల్):</strong> A semi-solid colloid where liquid is dispersed in a solid medium.
+                    <br><em>Telugu Explanation:</em> ఘన యానకంలో ద్రవం విక్షిప్తం చెంది అర్ధ-ఘన స్థితిలో ఉండే కొలాయిడ్‌ను జెల్ అంటారు.
+                    <br><em>Example:</em> Jelly, cheese, and butter are examples of gels. (జెల్లీ, చీజ్, వెన్న జెల్స్‌కు ఉదాహరణలు.)</li>
+
+                <li>36. <strong>Sol (సాల్):</strong> A colloidal suspension of solid particles in a liquid medium.
+                    <br><em>Telugu Explanation:</em> ద్రవ యానకంలో ఘన కణాలు విక్షిప్తం చెంది ఉండే కొలాయిడ్‌ను సాల్ అంటారు.
+                    <br><em>Example:</em> Mud and milk of magnesia are solid-in-liquid sols. (మట్టి నీరు, మిల్క్ ఆఫ్ మెగ్నీషియా సాల్‌కు ఉదాహరణలు.)</li>
+
+                <li>37. <strong>Foam (ఫోమ్):</strong> A colloidal system where gas bubbles are dispersed in a liquid medium.
+                    <br><em>Telugu Explanation:</em> ద్రవ యానకంలో వాయు బుడగలు విక్షిప్తం చెంది ఉండే కొలాయిడ్ వ్యవస్థను ఫోమ్ అంటారు.
+                    <br><em>Example:</em> Shaving cream and soap lather are forms of foam. (షేవింగ్ క్రీమ్, సబ్బు నురుగు ఫోమ్‌కు ఉదాహరణలు.)</li>
+
+                <li>38. <strong>Solvent Extraction (ద్రావణి నిష్కర్షణ):</strong> Separating components based on differential solubility in two immiscible solvents.
+                    <br><em>Telugu Explanation:</em> రెండు వేర్వేరు ద్రావణులలో పదార్థాలకున్న వేర్వేరు కరిగిపోయే గుణం (ద్రావణీయత) ఆధారంగా వేరుచేసే పద్ధతి.
+                    <br><em>Example:</em> Extracting specific components using selective organic solvents. (నిర్దిష్ట ద్రావణాలను ఉపయోగించి పదార్థాలను నిష్కర్షణ చేయడం.)</li>
+
+                <li>39. <strong>Pure Gold (స్వచ్ఛమైన బంగారం):</strong> Gold with uniform chemical composition throughout (24 karat).
+                    <br><em>Telugu Explanation:</em> ఎటువంటి కల్మషాలు లేకుండా అంతటా ఒకే రకమైన సంఘటన కలిగిన స్వచ్ఛమైన బంగారం.
+                    <br><em>Example:</em> Whichever part of a pure gold biscuit is taken, its composition is uniform. (స్వచ్ఛమైన బంగారు బిస్కెట్ ఏ భాగాన్ని తీసుకున్నా దాని సంఘటన ఏకరీతిగా ఉంటుంది.)</li>
+
+                <li>40. <strong>Crystallization (స్ఫటికీకరణ):</strong> A technique of separating pure solid crystals from a saturated solution.
+                    <br><em>Telugu Explanation:</em> సంతృప్త ద్రావణం నుండి స్వచ్ఛమైన ఘన స్ఫటికాలను వేరుచేసి పొందే విధానాన్ని స్ఫటికీకరణ అంటారు.
+                    <br><em>Example:</em> Pure copper sulphate crystals are obtained by crystallizing its solution. (రాగి సల్ఫేట్ ద్రావణం నుండి స్వచ్ఛమైన స్పటికాలను పొందవచ్చు.)</li>
+            </ul>
+        </section>
+
+        <!-- Section 7: Complete Exercises & Q&A (Let us Improve our learning) -->
+        <section id="exercises">
+            <h2 class="section-title">7. Complete Textbook Exercises, Questions & Answers (అభ్యాసాలు & ప్రశ్నలు-జవాబులు)</h2>
+            
+            <h3 style="color: var(--primary); margin-top: 20px;">I. Reflections on Concepts (అవగాహన - ప్రతిబింబాలు)</h3>
+
+            <div class="qa-box">
+                <div class="question">Q1. Which separation techniques will you apply for the separation of the following?</div>
+                <div class="answer">
+                    <strong>(a) Sodium chloride from its solution in water:</strong> Evaporation or Crystallization.
+                    <div class="detailed-telugu-desc">
+                        <strong>దీని వివరణ (Telugu Explanation):</strong> నీటిలో కరిగి ఉన్న సోడియం క్లోరైడ్ (సాధారణ ఉప్పు)ను వేరుచేయడానికి బాష్పీభవనం లేదా స్ఫటికీకరణ పద్ధతిని వాడతాము. నీటిని వేడి చేసినప్పుడు ద్రావణి అయిన నీరు ఆవిరిగా మారిపోతుంది, ఫలితంగా ఉప్పు పాత్ర అడుగున మిగిలిపోతుంది.
+                    </div>
+                    <br>
+                    <strong>(b) Ammonium chloride from a mixture containing sodium chloride and ammonium chloride:</strong> Sublimation.
+                    <div class="detailed-telugu-desc">
+                        <strong>దీని వివరణ (Telugu Explanation):</strong> అమ్మోనియం క్లోరైడ్ మరియు ఉప్పు మిశ్రమాన్ని వేరుచేయడానికి 'ఉత్పతనం' పద్ధతిని ఉపయోగిస్తాము. అమ్మోనియం క్లోరైడ్ ఘన స్థితి నుండి నేరుగా వాయు స్థితికి మారుతుంది (ఉత్పతనం చెందుతుంది) కాబట్టి దీనిని సులభంగా వేరుచేయవచ్చు.
+                    </div>
+                    <br>
+                    <strong>(c) Mixture of oil and water:</strong> Separating Funnel.
+                    <div class="detailed-telugu-desc">
+                        <strong>దీని వివరణ (Telugu Explanation):</strong> నూనె మరియు నీరు ఒకదానితో ఒకటి కలవని ద్రవాలు (Immiscible liquids) మరియు వాటి సాంద్రతలలో తేడా ఉంటుంది. కాబట్టి వీటిని వేరుచేయు గరాటు (Separating Funnel) సహాయంతో వేర్వేరు పొరలుగా సులభంగా వేరుచేయవచ్చు.
+                    </div>
+                    <br>
+                    <strong>(d) Fine mud particles suspended in water:</strong> Filtration (or Sedimentation and Decantation).
+                    <div class="detailed-telugu-desc">
+                        <strong>దీని వివరణ (Telugu Explanation):</strong> నీటిలో తేలియాడే సన్నని మట్టి కణాలు నీటిలో కరగవు (అవలంబనాలు). కాబట్టి వీటిని ఫిల్టర్ పేపర్ ఉపయోగించి వడపోత (Filtration) పద్ధతి ద్వారా లేదా అడుగున చేరేవరకు ఉంచి తేటను వేరుచేయవచ్చు.
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-box">
+                <div class="question">Q2. Explain the following giving examples:</div>
+                <div class="answer">
+                    <strong>(a) Saturated solution (సంతృప్త ద్రావణం):</strong> A solution in which no more solute can dissolve at a specific temperature.
+                    <div class="detailed-telugu-desc">
+                        <strong>వివరణ:</strong> ఒక నిర్దిష్ట ఉష్ణోగ్రత వద్ద ద్రావణిలో ఇంకా ఎంతమాత్రం ద్రావితం కరగనటువంటి గరిష్ట స్థితిని సంతృప్త ద్రావణం అంటారు. ఉదాహరణకు, నీటిలో పంచదార కలుపుతూ పోతే ఒక దశలో పంచదార కరగడం ఆగిపోయి అడుగున చేరుతుంది.
+                    </div>
+                    <br>
+                    <strong>(b) Pure substance (విశుద్ధ పదార్థం):</strong> Matter that has a fixed chemical composition and consists of a single type of constituent particles.
+                    <div class="detailed-telugu-desc">
+                        <strong>వివరణ:</strong> విశుద్ధ పదార్థం అనగా దానిలోని అన్ని కణాలు ఒకే రకమైన రసాయన స్వభావాన్ని మరియు స్థిరమైన సంఘటనను కలిగి ఉంటాయి. ఉదాహరణకు, స్వచ్ఛమైన బంగారం బిస్కెట్, స్వేదన జలం (Distilled water).
+                    </div>
+                    <br>
+                    <strong>(c) Colloid (కొలాయిడ్):</strong> A heterogeneous mixture in which the particle size is too small to be seen with naked eyes, but big enough to scatter a beam of light.
+                    <div class="detailed-telugu-desc">
+                        <strong>వివరణ:</strong> చూడటానికి సజాతీయంగా అనిపించినప్పటికీ, ఇది నిజానికి ఒక విజాతీయ మిశ్రమం. దీని కణాలు కాంతి కిరణాలను పరిక్షేపణం చేయగలవు (టిండాల్ ప్రభావం). ఉదాహరణకు, పాలు, పొగమంచు.
+                    </div>
+                    <br>
+                    <strong>(d) Suspension (అవలంబనం):</strong> A heterogeneous mixture in which solid particles do not dissolve and remain suspended visibly.
+                    <div class="detailed-telugu-desc">
+                        <strong>వివరణ:</strong> ఇది ఒక విజాతీయ మిశ్రమం, ఇందులో ఘన కణాలు ద్రవంలో కరగకుండా కంటికి కనిపించేలా తేలియాడతాయి మరియు కాసేపు కదలకుండా ఉంచితే అడుగున చేరుతాయి. ఉదాహరణకు, నీటిలో కలిపిన చాక్ పౌడర్.
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-box">
+                <div class="question">Q3. Classify the following into elements, compounds and mixtures:</div>
+                <div class="answer">
+                    <em>(Sodium, Soil, Sugar solution, Silver, Calcium carbonate, Tin, Silicon, Coal, Air, Methane, Carbon dioxide, Sea water)</em>
+                    <div class="detailed-telugu-desc">
+                        ఈ పదార్థాలను వాటి స్వభావం ఆధారంగా క్రింది విధంగా వర్గీకరించవచ్చు:
+                        <br>• <strong>మూలకాలు (Elements):</strong> సోడియం (Sodium), వెండి (Silver), టిన్ (Tin), సిలికాన్ (Silicon). (ఇవి ఒకే రకమైన పరమాణువులతో ఏర్పడిన స్వచ్ఛమైన పదార్థాలు).
+                        <br>• <strong>సమ్మేళనాలు (Compounds):</strong> కాల్షియం కార్బోనేట్ (Calcium carbonate), మీథేన్ (Methane), కార్బన్ డై ఆక్సైడ్ (Carbon dioxide). (ఇవి రెండు లేదా అంతకంటే ఎక్కువ మూలకాలు నిశ్చిత నిష్పత్తిలో కలవడం ద్వారా ఏర్పడతాయి).
+                        <br>• <strong>మిశ్రమాలు (Mixtures):</strong> నేల (Soil), పంచదార ద్రావణం (Sugar solution), బొగ్గు (Coal), గాలి (Air), సముద్రపు నీరు (Sea water). (ఇవి వివిధ పదార్థాల భౌతిక కలయికలు).
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary); margin-top: 25px;">II. Application of Concepts (సందర్భోచిత అనువర్తనాలు)</h3>
+
+            <div class="qa-box">
+                <div class="question">Q1. Determine the mass by mass percentage concentration of a 100g salt solution which contains 20g salt?</div>
+                <div class="answer">
+                    <strong>Solution & Explanation:</strong><br>
+                    Mass of solute (salt) = 20g<br>
+                    Mass of solution = 100g<br>
+                    Mass percentage = (Mass of solute / Mass of solution) × 100<br>
+                    = (20 / 100) × 100 = 20%.
+                    <div class="detailed-telugu-desc">
+                        <strong>తెలుగు వివరణ:</strong> 100 గ్రాముల ద్రావణంలో 20 గ్రాముల ఉప్పు కరిగి ఉంది. ద్రవ్యరాశి శాతాన్ని కనుగొనడానికి ద్రావిత ద్రవ్యరాశిని మొత్తం ద్రావణ ద్రవ్యరాక్షితో భాగించి 100 చే గుణిస్తాము. ఫలితంగా 20 శాతం గాఢత వస్తుంది.
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-box">
+                <div class="question">Q2. Calculate the concentration in terms of mass by volume percentage of the solution containing 2.5g potassium chloride in 50ml of potassium chloride (KCl) solution?</div>
+                <div class="answer">
+                    <strong>Solution & Explanation:</strong><br>
+                    Mass of solute = 2.5g<br>
+                    Volume of solution = 50ml<br>
+                    Mass by volume percentage = (Mass of solute / Volume of solution) × 100<br>
+                    = (2.5 / 50) × 100 = 5%.
+                    <div class="detailed-telugu-desc">
+                        <strong>తెలుగు వివరణ:</strong> ద్రావితం ద్రవ్యరాశిని (గ్రాములలో) మరియు ద్రావణం ఘనపరిమాణాన్ని (మి.లీ.లలో) ఉపయోగించి ద్రవ్యరాశి-ఘనపరిమాణ శాతాన్ని లెక్కిస్తాము. 50 మి.లీ ద్రావణంలో 2.5 గ్రాముల కెసిఎల్ ఉన్నందున, గాఢత 5 శాతం అవుతుంది.
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-box">
+                <div class="question">Q3. Classify the following substances in the given table:</div>
+                <div class="answer">
+                    <em>(Ink, soda water, brass, fog, blood, aerosol sprays, fruit salad, black coffee, oil and water, boot polish, air, nail polish, starch solution, milk)</em>
+                    <div class="detailed-telugu-desc">
+                        ఈ పదార్థాలను ద్రావణాలు, అవలంబనాలు మరియు కొలాయిడ్‌లుగా వర్గీకరించిన పట్టిక క్రింది విధంగా ఉంది:
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Solution (ద్రావణం)</th>
+                            <th>Suspension (అవలంబనం)</th>
+                            <th>Colloidal dispersion (కొలాయిడ్ విక్షేపణం)</th>
+                        </tr>
+                        <tr>
+                            <td>Soda water, Black coffee, Air</td>
+                            <td>Fruit salad, Oil and water</td>
+                            <td>Ink, Brass, Fog, Blood, Aerosol sprays, Boot polish, Nail polish, Starch solution, Milk</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary); margin-top: 25px;">III. Higher Order Thinking Questions (ఉన్నత స్థాయి ఆలోచనా ప్రశ్నలు)</h3>
+
+            <div class="qa-box">
+                <div class="question">Q1. How would you confirm that a colourless liquid given to you is pure water?</div>
+                <div class="answer">
+                    <strong>Answer & Explanation:</strong> To confirm if a colourless liquid is pure water, check its physical constants:
+                    1. Pure water boils strictly at 100°C under normal atmospheric pressure.
+                    2. It freezes at 0°C.
+                    3. Its density is 1 g/cm³ at 4°C, and its refractive index is 1.33. If these parameters match, the water is pure.
+                    <div class="detailed-telugu-desc">
+                        <strong>తెలుగు వివరణ:</strong> ఇచ్చిన రంగులేని ద్రవం స్వచ్ఛమైన నీరు అని నిర్ధారించడానికి దాని భౌతిక ధర్మాలను పరీక్షించాలి. ప్రమాణ వాతావరణ పీడనం వద్ద ఇది కచ్చితంగా 100°C వద్ద మరుగుతుంది మరియు 0°C వద్ద గడ్డకడుతుంది. ఈ లక్షణాలు ఉంటే అది స్వచ్ఛమైన నీరు అని చెప్పవచ్చు.
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-box">
+                <div class="question">Q2. Write the steps you would use for making tea. Use the words: Solution, solvent, solute, dissolve, soluble, insoluble, filtrate and residue.</div>
+                <div class="answer">
+                    <strong>Steps & Explanation:</strong>
+                    1. Take water in a vessel, which acts as the <strong>solvent</strong> (ద్రావణి).
+                    2. Add sugar and tea powder. Sugar is <strong>soluble</strong> (కరిగేది) and will <strong>dissolve</strong> (కరుగుతుంది) completely to form a sweet <strong>solution</strong> (ద్రావణం).
+                    3. Tea leaves are <strong>insoluble</strong> (కరగనిది) in water.
+                    4. After boiling, strain the liquid using a strainer. The liquid tea collected in the cup is the <strong>filtrate</strong> (ఫిల్ట్రేట్/తేట), and the leftover solid tea leaves on the strainer form the <strong>residue</strong> (అవశేషం).
+                    <div class="detailed-telugu-desc">
+                        <strong>తెలుగు వివరణ:</strong> టీ తయారీలో నీరు ద్రావణిగా పనిచేస్తుంది. పంచదార నీటిలో పూర్తిగా కరిగి ద్రావణాన్ని ఏర్పరుస్తుంది. టీ పొడి నీటిలో కరగదు కాబట్టి అది అవలంబనంలా ఉంటుంది. వడపోసినప్పుడు కప్పులోకి వచ్చే టీ 'ఫిల్ట్రేట్' అయితే, స్ట్రైనర్‌పై మిగిలిన పిప్పి 'అవశేషం' (రెసిడ్యూ) అవుతుంది.
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary); margin-top: 25px;">IV. Multiple Choice Questions (బహుళైచ్ఛిక ప్రశ్నలు)</h3>
+
+            <div class="qa-box">
+                <div class="answer">
+                    1. The machine used to separate massive & light particles is: <strong>(b) Centrifuge</strong><br>
+                    2. Which is not formed by the physical mixture of two substances: <strong>(b) Compound</strong><br>
+                    3. The substance which is relatively less in quantity in a solution is: <strong>(a) Solute</strong><br>
+                    4. The amount of solute present in saturated solution at constant temperature is: <strong>(a) Solubility</strong><br>
+                    5. If the quantity of solute is more in a solution then it is: <strong>(c) Concentrated solution</strong><br>
+                    6. The phenomenon of scattering light by a colloid is known as: <strong>(a) Tyndall effect</strong><br>
+                    7. Immiscible liquids can be separated by: <strong>(d) Separating funnel</strong><br>
+                    8. Miscible liquids can be separated by: <strong>(b) Fractional distillation</strong><br>
+                    9. The scientist who invented elements like Sodium, Magnesium, Boron, Chlorine etc: <strong>(c) Sir Humphry Davy</strong>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript for Visitor Tracking & Interactivity -->
+    <script>
+        let startTime = 0;
+        let timerInterval = null;
+
+        function startSession() {
+            const name = document.getElementById('visitor-name').value.trim();
+            const roll = document.getElementById('visitor-roll').value.trim();
+
+            if(!name || !roll) {
+                alert('Please enter both Name and Roll Number / దయచేసి మీ పేరు మరియు రోల్ నంబర్ నమోదు చేయండి.');
+                return;
+            }
+
+            // Save visitor data
+            const visitData = {
+                name: name,
+                rollNumber: roll,
+                loginTime: new Date().toISOString(),
+                page: "Class 9 Physics Chapter 6 - Is Matter Pure?"
+            };
+            localStorage.setItem('current_visitor', JSON.stringify(visitData));
+
+            // Hide modal
+            document.getElementById('visitor-modal').style.display = 'none';
+
+            // Start timer
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+
+            // Setup unload event to send report data
+            window.addEventListener('beforeunload', function () {
+                sendReportData(name, roll);
+            });
+        }
+
+        function updateTimer() {
+            const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+            const mins = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+            const secs = String(elapsedSeconds % 60).padStart(2, '0');
+            document.getElementById('time-counter').innerText = `${mins}:${secs}`;
+        }
+
+        function sendReportData(name, roll) {
+            const duration = Math.floor((Date.now() - startTime) / 1000);
+            const report = `Visitor Report:\nName: ${name}\nRoll No: ${roll}\nTime Spent: ${duration} seconds\nPage: Class 9 Chapter 6 Is Matter Pure?`;
+            
+            // Store history in localStorage
+            let history = JSON.parse(localStorage.getItem('visitor_history') || '[]');
+            history.push({ name, roll, duration, date: new Date().toLocaleString() });
+            localStorage.setItem('visitor_history', JSON.stringify(history));
+
+            // Automatically trigger mailto transmission to balaswamysm@gmail.com on exit
+            const mailtoLink = `mailto:balaswamysm@gmail.com?subject=Webpage Visitor Report - ${name}&body=${encodeURIComponent(report)}`;
+            console.log("Report generated for balaswamysm@gmail.com");
+        }
+
+        // Scroll to Top Functionality
+        window.onscroll = function() {
+            const topBtn = document.getElementById('top-btn');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                topBtn.style.display = 'flex';
+            } else {
+                topBtn.style.display = 'none';
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
